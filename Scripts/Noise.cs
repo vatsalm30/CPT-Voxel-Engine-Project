@@ -19,13 +19,13 @@ public class Noise
 
     public float ThreeDNoise(float x, float y, float z, float scale)
     {
-        float xy = Mathf.PerlinNoise(x * scale, y * scale);
-        float xz = Mathf.PerlinNoise(x * scale, z * scale);
-        float zy = Mathf.PerlinNoise(z * scale, y * scale);
+        float xy = perlin(x * scale, y * scale, 2, .5f);
+        float xz = perlin(x * scale, z * scale, 2, .5f);
+        float zy = perlin(z * scale, y * scale, 2, .5f);
 
-        float yx = Mathf.PerlinNoise(y * scale, x * scale);
-        float zx = Mathf.PerlinNoise(z * scale, x * scale);
-        float yz = Mathf.PerlinNoise(z * scale, y * scale);
+        float yx = perlin(y * scale, x * scale, 2, .5f);
+        float zx = perlin(z * scale, x * scale, 2, .5f);
+        float yz = perlin(z * scale, y * scale, 2, .5f);
 
         float xyz = xy + xz + yz + yx + zx + yz + zy;
         return xyz / 6f;

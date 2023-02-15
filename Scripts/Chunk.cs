@@ -43,6 +43,8 @@ public class Chunk : MonoBehaviour
     int vertexIndex = 0;
     public float xOffset;
     public float zOffset;
+    public int xPos;
+    public int zPos;
     public float ChunkReducer;
     public ThreeDNoiseFeatures[] threeDNoiseFeatures;
 

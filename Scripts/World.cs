@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class World : MonoBehaviour
 {
-
     public Material material;
     public BlockTexture[] blockTexture;
     public ThreeDNoiseFeatures[] threeDNoiseFeatures;
+    public Transform player;
     public int ChunkHeight;
     public int ChunkWidth;
 
@@ -17,43 +17,60 @@ public class World : MonoBehaviour
 
     public float chunkReducer;
 
-    public int WorldSize;
+    public int RenderDist;
+
+    List<int[]> chunksMatrix;
     void Start()
     {
-        for(int x = 0; x < WorldSize; x++)
+        chunksMatrix = new List<int[]>();
+        for (int x = 0; x < RenderDist; x++)
         {
-            for(int z = 0; z < WorldSize; z++)
+
+            for (int z = 0; z < RenderDist; z++)
             {
-                ChunkCreate(x, z);
+                Chunk chunk = ChunkCreate(x, z);
+                chunksMatrix.Add(new int[] {x,z});
+                print(chunksMatrix[x][1]);
             }
         }
         
     }
 
-    void ChunkCreate(int xpos, int zpos)
+    Chunk ChunkCreate(int xpos, int zpos)
     {
         GameObject gameObject = new GameObject();
-        gameObject.name = "Chunk";
+        gameObject.name = $"Chunk [{xpos}, {zpos}]";
         gameObject.transform.SetParent(transform);
         gameObject.transform.position = new Vector3(xpos * ChunkWidth, 0, zpos * ChunkWidth);
         gameObject.layer = 3;
+
         MeshRenderer meshRenderer = gameObject.AddComponent<MeshRenderer>();
         MeshFilter meshFilter = gameObject.AddComponent<MeshFilter>();
         Chunk chunk = gameObject.AddComponent<Chunk>();
+
+        chunk.xPos = xpos;
+        chunk.zPos = zpos;
+
         meshRenderer.material = material;
         chunk.blockTexture = blockTexture;
+
         chunk.meshFilter = meshFilter;
         chunk.meshRenderer = meshRenderer;
+
         chunk.ChunkHeight = ChunkHeight;
         chunk.ChunkWidth = ChunkWidth;
+
         chunk.scale = scale;
         chunk.octaves = octaves;
         chunk.persistane = persistane;
+
         chunk.ChunkReducer = chunkReducer;
         chunk.xOffset = xpos * ChunkWidth;
         chunk.zOffset = zpos * ChunkWidth;
+
         chunk.threeDNoiseFeatures = threeDNoiseFeatures;
 
+        return chunk;
     }
 }
 
@@ -113,7 +130,8 @@ public class ThreeDNoiseFeatures
 
     public int ThreeDBlockToPlace(Vector3 pos, int currentBlockId)
     {
-        if (noise.ThreeDNoise(pos.x + offset.x, pos.y + offset.y, pos.z + offset.z, ThreeDScale) > ThreeDThreshold && pos.y > GenerationMinHeight && pos.y < GenerationMaxHeight)
+        float num = noise.ThreeDNoise(pos.x + offset.x, pos.y + offset.y, pos.z + offset.z, ThreeDScale);
+        if (num > ThreeDThreshold && pos.y > GenerationMinHeight && pos.y < GenerationMaxHeight)
             return BlockID;
         return currentBlockId;
     }

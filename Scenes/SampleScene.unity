@@ -326,6 +326,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -399,6 +400,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b6383ff15c2644bbca144a60f4fa9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movemtntSpeed: 10
+  speedH: 2
+  speedV: 2
 --- !u!1 &1331079309
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,9 +424,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1331079314}
-  - component: {fileID: 1331079313}
   - component: {fileID: 1331079312}
-  - component: {fileID: 1331079315}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -460,14 +474,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1331079313
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1331079309}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &1331079314
 Transform:
   m_ObjectHideFlags: 0
@@ -476,28 +482,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1331079309}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 19, z: 0}
+  m_LocalPosition: {x: 0, y: 200, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1331079315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1331079309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2259915239987542891f7be0c32929d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!1 &2048281799
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,15 +578,16 @@ MonoBehaviour:
   threeDNoiseFeatures:
   - featureName: Upper Under Ground Caves
     ThreeDScale: 0.03
-    ThreeDThreshold: 0.55
+    ThreeDThreshold: 0.9
     BlockID: 0
-    GenerationMaxHeight: 76
+    GenerationMaxHeight: 130
     GenerationMinHeight: 3
     offset: {x: 0, y: 0, z: 0}
+  player: {fileID: 1331079314}
   ChunkHeight: 128
   ChunkWidth: 16
   scale: 0.015
   octaves: 2
   persistane: 0.5
   chunkReducer: 2.5
-  WorldSize: 20
+  RenderDist: 2

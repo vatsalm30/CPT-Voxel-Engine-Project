@@ -20,20 +20,14 @@ public class World : MonoBehaviour
     public int RenderDist;
 
     List<int[]> chunksMatrix;
-    void Start()
-    {
-        chunksMatrix = new List<int[]>();
-        for (int x = 0; x < RenderDist; x++)
-        {
+    int[][] quadrants;
 
-            for (int z = 0; z < RenderDist; z++)
-            {
-                Chunk chunk = ChunkCreate(x, z);
-                chunksMatrix.Add(new int[] {x,z});
-                print(chunksMatrix[x][1]);
-            }
-        }
-        
+    int playerCenterX;
+    int playerCenterZ;
+
+   void Start()
+    {
+        CreateWorld();   
     }
 
     Chunk ChunkCreate(int xpos, int zpos)
@@ -72,6 +66,47 @@ public class World : MonoBehaviour
 
         return chunk;
     }
+
+    void CreateWorld()
+    {
+        chunksMatrix = new List<int[]>();
+        quadrants = new int[][] { new int[] { 1, 1 }, new int[] { -1, 1 }, new int[] { 1, -1 }, new int[] { -1, -1 } };
+        playerCenterX = Mathf.FloorToInt(player.transform.position.x/ChunkWidth);
+        playerCenterZ = Mathf.FloorToInt(player.transform.position.z/ChunkWidth);
+
+        foreach (int[] i in quadrants)
+        {
+            for (int x = 0; x < RenderDist; x++)
+            {
+                for (int z = 0; z < RenderDist; z++)
+                {
+                    ChunkCreate(x * i[0] + playerCenterX, z * i[1] + playerCenterZ);
+                    chunksMatrix.Add(new int[] { x, z });
+                }
+            }
+        }
+    }
+
+    void Update()
+    {
+        UpdateChunks();
+    }
+
+    void UpdateChunks()
+    {
+        if(playerCenterX != Mathf.FloorToInt(player.transform.position.x / ChunkWidth))
+        {
+            playerCenterX = Mathf.FloorToInt(player.transform.position.x / ChunkWidth);
+            print("X");
+        }
+
+        if (playerCenterZ != Mathf.FloorToInt(player.transform.position.z / ChunkWidth))
+        {
+            playerCenterZ = Mathf.FloorToInt(player.transform.position.z / ChunkWidth);
+            print("Z");
+        }
+    }
+
 }
 
 [System.Serializable]

@@ -1,0 +1,145 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1680526123136185814
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1680526123136185817}
+  - component: {fileID: 1680526123136185816}
+  m_Layer: 3
+  m_Name: World1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1680526123136185817
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680526123136185814}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1680526123136185816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680526123136185814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f45c076f3cfaf9b48be9a05c2b6c5e14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: a948310f9fe285648ab1ecc8a57381e5, type: 2}
+  blockTexture:
+  - blockName: Grass
+    isSolid: 1
+    topTexture: 2
+    bottomTexture: 0
+    leftTexture: 1
+    rightTexture: 1
+    frontTexture: 1
+    backTexture: 1
+  - blockName: Dirt
+    isSolid: 1
+    topTexture: 0
+    bottomTexture: 0
+    leftTexture: 0
+    rightTexture: 0
+    frontTexture: 0
+    backTexture: 0
+  - blockName: Stone
+    isSolid: 1
+    topTexture: 3
+    bottomTexture: 3
+    leftTexture: 3
+    rightTexture: 3
+    frontTexture: 3
+    backTexture: 3
+  - blockName: StoneMiddle
+    isSolid: 1
+    topTexture: 4
+    bottomTexture: 4
+    leftTexture: 4
+    rightTexture: 4
+    frontTexture: 4
+    backTexture: 4
+  - blockName: StoneBottom
+    isSolid: 1
+    topTexture: 5
+    bottomTexture: 5
+    leftTexture: 5
+    rightTexture: 5
+    frontTexture: 5
+    backTexture: 5
+  threeDNoiseFeatures:
+  - featureName: Upper Under Ground Caves
+    ThreeDScale: 0.03
+    ThreeDThreshold: 0.35
+    BlockID: 0
+    GenerationMaxHeight: 108
+    GenerationMinHeight: 3
+    octaves: 3
+    persistence: 0.5
+    offset: {x: 0, y: 0, z: 0}
+  - featureName: Dirt Sploches
+    ThreeDScale: 0.04
+    ThreeDThreshold: 0.355
+    BlockID: 2
+    GenerationMaxHeight: 85
+    GenerationMinHeight: 50
+    octaves: 3
+    persistence: 0.5
+    offset: {x: 0, y: 0, z: 0}
+  - featureName: Top Stone Sploches
+    ThreeDScale: 0.035
+    ThreeDThreshold: 0.355
+    BlockID: 3
+    GenerationMaxHeight: 128
+    GenerationMinHeight: 100
+    octaves: 3
+    persistence: 0.5
+    offset: {x: 0, y: 0, z: 0}
+  - featureName: Midlle Stone Mixing WIth Top Stone
+    ThreeDScale: 0.033
+    ThreeDThreshold: 0.34
+    BlockID: 4
+    GenerationMaxHeight: 65
+    GenerationMinHeight: 45
+    octaves: 3
+    persistence: 0.5
+    offset: {x: -26.65, y: 83.86, z: -70.96}
+  - featureName: Bottom  Stone Mixing WIth Middle Stone
+    ThreeDScale: 0.033
+    ThreeDThreshold: 0.34
+    BlockID: 5
+    GenerationMaxHeight: 30
+    GenerationMinHeight: 10
+    octaves: 3
+    persistence: 0.5
+    offset: {x: 78230, y: 646723, z: 62169}
+  player: {fileID: 0}
+  ChunkHeight: 128
+  ChunkWidth: 16
+  UseRandomSeed: 1
+  Seed: -1974696190
+  scale: 0.015
+  octaves: 4
+  persistane: 0.5
+  chunkReducer: 0.95
+  RenderDist: 5
+  SpawnRenderDistance: 6
